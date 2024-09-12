@@ -33,8 +33,8 @@ int main() {
     // same as SF main thread
     struct sched_param param = {0};
     param.sched_priority = 2;
-    if (sched_setscheduler(0, SCHED_FIFO | SCHED_RESET_ON_FORK, &param) != 0) {
-        ALOGE("Couldn't set SCHED_FIFO: %d", errno);
+    if (sched_setscheduler(0, SCHED_RR | SCHED_RESET_ON_FORK, &param) != 0) {
+        ALOGE("Couldn't set SCHED_RR: %d", errno);
     }
 
     android::hardware::configureRpcThreadpool(4, true /* will join */);
